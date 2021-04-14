@@ -2,7 +2,7 @@
 
 # dependencies
 */node_modules
-*/main.css
+client/src/assets/main.css
 client/.pnp
 client/.pnp.js
 
