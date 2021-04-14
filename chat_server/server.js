@@ -1,11 +1,7 @@
 const http = require('http');
-// const config = require('./config')
 const app = require('./app');
-const fs = require('fs');
-const cors = require('cors');
 const socketIo = require("socket.io");
 const axios = require('axios');
-const { exit } = require('process');
 require('dotenv').config()
 
 const port = process.env.PORT || 4000
@@ -16,12 +12,20 @@ const io = socketIo(server, {
     }
 })
 
-const sender = {uid: 0, name: "GPT-3"}
+const port2 = process.env.PORT2 || 4001
+const server2 = http.createServer(app);
+const io2 = socketIo(server2, {
+    cors: {
+      origin: '*',
+    }
+})
+
 
 const robotUrl = process.env.ROBOT_URL || "http://localhost:5000/"
 const url = process.env.URL || "192.168.0.10"
 
 io.on("connection", (socket) => {
+    const sender = {uid: 0, name: "GPT-3"}
     console.log(`New connection\n ID: ${socket.id}`)
     socket.emit("response", {
         text: "Hello human. Feel free to ask me anything.",
@@ -30,7 +34,6 @@ io.on("connection", (socket) => {
         time: (new Date()).toLocaleString()
     })
     socket.on("message", (data) => {
-
         var text = ""
         axios({
             method: 'post',
@@ -63,9 +66,22 @@ io.on("connection", (socket) => {
     })
 })
 
+io2.on("connection", (socket) => {
+    console.log(`New groupchat connection\n ID: ${socket.id}`)
+    socket.on("message", (data) => {
+        data.isSent = !data.isSent
+        socket.broadcast.emit("response", data);
+    })
+})
 
 server.listen(port, url);
 
+server2.listen(port2, url);
+
 server.once('listening', function () {
     console.info(`Listening on http://${url}:${port}`);
+});
+
+server2.once('listening', function () {
+    console.info(`Listening on http://${url}:${port2}`);
 });

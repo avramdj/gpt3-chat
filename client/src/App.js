@@ -1,29 +1,33 @@
-import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import ChatPage from './ChatPage';
-import NavBar from './components/NavBar'
+import { useEffect, useState } from "react";
+import ChatPageRobot from "./ChatPageRobot";
+import ChatPageGlobal from "./ChatPageGlobal";
+import Home from "./Home"
+import Authed from './Authed'
+import Unauthed from './Unauthed'
+import Login from "./Login";
+import Logout from "./Logout";
+import Page404 from "./Page404";
 
 function App() {
 
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    console.log("user changed")
-  }, [user])
-
   return (
-    <div className="h-screen">
-      <div className="h-1/10">
-        <NavBar user={user} />
-      </div>
-      <ChatPage user={user}/>
-    </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+          <Unauthed path="/login" exact component={Login}/>
+          <Unauthed path="/signup" exact component={Login}/>
+          <Authed path="/gpt" exact component={ChatPageRobot}/>
+          <Authed path="/global" exact component={ChatPageGlobal}/>
+          <Authed path="/logout" exact component={Logout}/>
+          <Route component={Page404}/>
+        </Switch>
+      </Router>
   );
 }
-    
+
 export default App;

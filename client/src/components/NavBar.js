@@ -1,9 +1,10 @@
+import { isLoggedIn } from "../isLoggedIn";
 import NavBarGuest from "./NavBarGuest";
 import NavBarUser from "./NavBarUser";
 
 function NavBar(props) {
-    if(props.user){
-        return <NavBarUser user={props.user}/>
+    if(isLoggedIn()){
+        return <NavBarUser user={{uid: 0}}/>
     } else {
         return <NavBarGuest />
     }
