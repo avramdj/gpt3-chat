@@ -70,7 +70,7 @@ function NavBar(props) {
             {/* Profile dropdown */}
             <div className="ml-3 relative">
             <div>
-                <button onClick={toggleDropdown} type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                <button onClick={toggleDropdown} type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none" id="user-menu" aria-expanded="false" aria-haspopup="true">
                 <span className="sr-only">Open user menu</span>
                 <img className="h-8 w-8 rounded-full" src="https://source.unsplash.com/random" alt="" />
                 </button>

@@ -11,8 +11,8 @@ function MessageBoard(props) {
   })
 
   const getMessages = () => {
-    return props.messages.data.map((content, index) => 
-      <MessageCard content={content} key={index}/>
+    return props.messages.data.map((msgObj, index) => 
+      <MessageCard isSent={msgObj.isSent} name={msgObj.sender} content={msgObj.text} key={index}/>
     )
   }
 
@@ -28,8 +28,7 @@ function MessageBoard(props) {
 
   return (
     <div className="scrollContainer max-h-full space-x-5 space-y-5 overflow-y-scroll">
-      <MessageCard isSent />
-      <MessageCard />
+      <div></div>
       {getMessages()}
       <div id="dummyDiv" ref={(el) => { messagesEnd = el}}></div>
     </div>
