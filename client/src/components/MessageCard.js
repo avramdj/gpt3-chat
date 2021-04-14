@@ -13,7 +13,7 @@ function MessageCard(props) {
           animate={
             {opacity: 1}
           }
-          class="break-words px-6 py-1 mt-auto w-max max-w-full bg-white rounded-xl shadow-md flex flex-row-reverse items-center space-x-4 place-self-end">
+          className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex flex-row-reverse space-x-4 self-end">
         <MessagePhoto isSent/>
         <MessageContent isSent name={props.name} content={props.content}/>
       </motion.div>
@@ -25,7 +25,7 @@ function MessageCard(props) {
           animate={
             {opacity: 1}
           }
-          class="break-words px-6 py-1 mt-auto w-max max-w-full mr-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+          className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex space-x-4">
         <MessagePhoto />
         <MessageContent name={props.name} content={props.content}/>
       </motion.div>

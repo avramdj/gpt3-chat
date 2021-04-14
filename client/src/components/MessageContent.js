@@ -9,7 +9,7 @@ function MessageContent(props) {
   } else {
     return (
       <div className="px-6 py-4">
-        <div class="text-xl font-medium text-black">{props.name}</div>
+        <div class="text-left text-xl font-medium text-black">{props.name}</div>
         <p class="text-gray-500">{props.content}</p>
       </div>
     )

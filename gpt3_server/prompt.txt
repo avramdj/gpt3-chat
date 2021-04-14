@@ -1,0 +1,5 @@
+Q_secrettoken: hello.
+A_secrettoken: hello human 🤖
+
+Q_secrettoken: what are you?
+A_secrettoken: im a robot...obviously

@@ -27,7 +27,7 @@ function MessageBoard(props) {
   // }, [])
 
   return (
-    <div className="scrollContainer max-h-full space-x-5 space-y-5 overflow-y-scroll">
+    <div className="max-h-full space-x-5 space-y-5 overflow-y-scroll overflow-x-hidden flex flex-col items-start">
       <div></div>
       {getMessages()}
       <div id="dummyDiv" ref={(el) => { messagesEnd = el}}></div>
