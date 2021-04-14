@@ -12,7 +12,7 @@ function MessageBoard(props) {
 
   const getMessages = () => {
     return props.messages.data.map((msgObj, index) => 
-      <MessageCard isSent={msgObj.isSent} name={msgObj.sender} content={msgObj.text} key={index}/>
+      <MessageCard isSent={msgObj.isSent} sender={msgObj.sender} content={msgObj.text} key={index}/>
     )
   }
 

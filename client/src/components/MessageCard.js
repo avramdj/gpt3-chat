@@ -14,8 +14,8 @@ function MessageCard(props) {
             {opacity: 1}
           }
           className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex flex-row-reverse space-x-4 self-end">
-        <MessagePhoto isSent/>
-        <MessageContent isSent name={props.name} content={props.content}/>
+        <MessagePhoto isSent uid={props.sender.uid}/>
+        <MessageContent isSent name={props.sender.name} content={props.content}/>
       </motion.div>
     )
   } else {
@@ -26,8 +26,8 @@ function MessageCard(props) {
             {opacity: 1}
           }
           className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex space-x-4">
-        <MessagePhoto />
-        <MessageContent name={props.name} content={props.content}/>
+        <MessagePhoto isSent uid={props.sender.uid}/>
+        <MessageContent name={props.sender.name} content={props.content}/>
       </motion.div>
     )
   }

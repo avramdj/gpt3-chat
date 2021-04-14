@@ -17,32 +17,44 @@ with open("prompt.txt", "r") as f:
 
 template = """
 
-Q_secrettoken: {}
-A_secrettoken:"""
+Person1: {}
+Person2:"""
+
+user_history = {}
 
 @app.route('/', methods=['POST'])
 def call_robot():
     in_data = request.json['input']
-    print(in_data)
-    prompt_local = prompt + template.format(in_data)
+    uid = request.json['userid']
+    history = ""
+
+    if uid in user_history:
+        history = user_history[uid]
+
+    prompt_local = prompt + history + template.format(in_data)
+        
     result = openai.Completion.create(
         engine="davinci",
         prompt=prompt_local,
         temperature=0.9,
         max_tokens=64,
-        stop="Q_secrettoken",
+        stop=["Person1", "Person2", "\n"],
         top_p=1.0,
-        frequency_penalty=0.1,
-        presence_penalty=-0.1
+        frequency_penalty=0.0,
+        presence_penalty=-0.6
     )
 
     text = result.choices[0]['text']
     text = text.strip('     \n')
 
-    print(text)
-
-    if text == "":
+    if text == "" or text == None:
         return {"ok": False}
+
+    if uid in user_history:
+        user_history[uid] += text + '\n'
+    else:
+        user_history[uid] = text + '\n'
+
     return {"ok": True, "data": text}
 
 app.run(host='0.0.0.0', port=os.environ.get("PORT"))

@@ -16,12 +16,15 @@ const io = socketIo(server, {
     }
 })
 
-const sender = "GPT-3"
+const sender = {uid: 0, name: "GPT-3"}
+
 const robotUrl = process.env.ROBOT_URL || "http://localhost:5000/"
+const url = process.env.URL || "192.168.0.10"
 
 io.on("connection", (socket) => {
+    console.log(`New connection\n ID: ${socket.id}`)
     socket.emit("response", {
-        text: "hello human 🤖",
+        text: "Hello human. Feel free to ask me anything.",
         isSent: false,
         sender: sender,
         time: (new Date()).toLocaleString()
@@ -34,11 +37,16 @@ io.on("connection", (socket) => {
             'Content-Type': 'application/json',
             url: robotUrl,
             data: {
-                input: data.text
+                input: data.text,
+                userid: socket.id
             }
             })
             .then(res => {
                 text = res.data.data
+                if(text == undefined){
+                    console.log("No response...")
+                    return
+                }
                 responseObj = {
                     text: text,
                     isSent: false,
@@ -56,8 +64,8 @@ io.on("connection", (socket) => {
 })
 
 
-server.listen(port);
+server.listen(port, url);
 
 server.once('listening', function () {
-    console.info(`Listening on http://localhost:${port}`);
+    console.info(`Listening on http://${url}:${port}`);
 });

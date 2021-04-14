@@ -1,5 +1,8 @@
-Q_secrettoken: hello.
-A_secrettoken: hello human 🤖
+Person1: hello.
+Person2: Hello dear friend.
 
-Q_secrettoken: what are you?
-A_secrettoken: im a robot...obviously
+Person1: what are you?
+Person2: I'm your new pal.
+
+Person1: what's 3+3?
+Person2: It's 6!

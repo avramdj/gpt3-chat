@@ -2,7 +2,7 @@ import MessageBoard from './components/MessageBoard'
 import { useEffect, useState } from 'react';
 import API from './Api'
 import socketIOClient from "socket.io-client";
-const ENDPOINT = 'localhost:4000'
+const ENDPOINT = '192.168.0.10:4000'
 
 function ChatPage() {
 
@@ -50,7 +50,7 @@ function ChatPage() {
       return
     }
     if(inputText != ""){
-      const newMessageData = { text: inputText, isSent: true, sender: "me", time: (new Date()).toLocaleString()}
+      const newMessageData = { text: inputText, isSent: true, sender: {uid: 123, name: "Avram"}, time: (new Date()).toLocaleString()}
       socket.emit("message", newMessageData)
       addMessage(newMessageData)
       inputEl.value = ""
