@@ -1,6 +1,6 @@
 # GPT-3 chat app
 
-OpenAI GPT-3 bot chat application with React, Tailwind, Express and Flask
+OpenAI GPT-3 bot chat application with React, Tailwind, Express, MongoDB and Flask
 
 #### Screenshots: 
 ![video](https://user-images.githubusercontent.com/48069158/114811747-faa63900-9dae-11eb-8eed-285e9810ea22.gif)
