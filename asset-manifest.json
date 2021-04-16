@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/gpt3/static/css/main.874b6f5e.chunk.css",
-    "main.js": "/gpt3/static/js/main.4795898a.chunk.js",
-    "main.js.map": "/gpt3/static/js/main.4795898a.chunk.js.map",
-    "runtime-main.js": "/gpt3/static/js/runtime-main.84a82b26.js",
-    "runtime-main.js.map": "/gpt3/static/js/runtime-main.84a82b26.js.map",
-    "static/js/2.4c6846b1.chunk.js": "/gpt3/static/js/2.4c6846b1.chunk.js",
-    "static/js/2.4c6846b1.chunk.js.map": "/gpt3/static/js/2.4c6846b1.chunk.js.map",
-    "index.html": "/gpt3/index.html",
-    "static/css/main.874b6f5e.chunk.css.map": "/gpt3/static/css/main.874b6f5e.chunk.css.map",
-    "static/js/2.4c6846b1.chunk.js.LICENSE.txt": "/gpt3/static/js/2.4c6846b1.chunk.js.LICENSE.txt"
+    "main.css": "/react-gpt3-chat/static/css/main.874b6f5e.chunk.css",
+    "main.js": "/react-gpt3-chat/static/js/main.4795898a.chunk.js",
+    "main.js.map": "/react-gpt3-chat/static/js/main.4795898a.chunk.js.map",
+    "runtime-main.js": "/react-gpt3-chat/static/js/runtime-main.a7aeef53.js",
+    "runtime-main.js.map": "/react-gpt3-chat/static/js/runtime-main.a7aeef53.js.map",
+    "static/js/2.63bcfb55.chunk.js": "/react-gpt3-chat/static/js/2.63bcfb55.chunk.js",
+    "static/js/2.63bcfb55.chunk.js.map": "/react-gpt3-chat/static/js/2.63bcfb55.chunk.js.map",
+    "index.html": "/react-gpt3-chat/index.html",
+    "static/css/main.874b6f5e.chunk.css.map": "/react-gpt3-chat/static/css/main.874b6f5e.chunk.css.map",
+    "static/js/2.63bcfb55.chunk.js.LICENSE.txt": "/react-gpt3-chat/static/js/2.63bcfb55.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.84a82b26.js",
-    "static/js/2.4c6846b1.chunk.js",
+    "static/js/runtime-main.a7aeef53.js",
+    "static/js/2.63bcfb55.chunk.js",
     "static/css/main.874b6f5e.chunk.css",
     "static/js/main.4795898a.chunk.js"
   ]
