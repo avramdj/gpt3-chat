@@ -5,8 +5,8 @@ OpenAI GPT-3 bot chat application.
 ### Architecture
  * <b>Frontend</b>: React, Socket.IO, Redux, Axios, Tailwind. *(Single page React app.)*
  * <b>Backend</b>: 
-    * <b>Node server</b>: Express, Socket.IO, MongoDB, Axios. *(REST API and Socket.IO server)*
-    * <b>GPT-3 serve</b>: Flask, OpenAI API *(Python Flask server which abstracts communication with the OpenAI API)*
+    * <b>Node server</b>: Express, Socket.IO, MongoDB, Axios. *(REST API with JWT based authentication and Socket.IO chat server)*
+    * <b>GPT-3 server</b>: Flask, OpenAI API *(Python Flask server which abstracts communication with the OpenAI API)*
 
 #### Screenshots: 
 ![video](https://user-images.githubusercontent.com/48069158/114811747-faa63900-9dae-11eb-8eed-285e9810ea22.gif)
