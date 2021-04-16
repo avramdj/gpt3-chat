@@ -1,15 +1,15 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBarUser(props) {
 
-  const [dropdownToggled, setDropdownToggle] = useState(false);
+  // const [dropdownToggled, setDropdownToggle] = useState(false);
 
   const [isMobileMenuShown, setMobileMenuShow] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownToggle(!dropdownToggled);
-  }
+  // const toggleDropdown = () => {
+  //   setDropdownToggle(!dropdownToggled);
+  // }
 
   const toggleMobileMenu = () => {
     setMobileMenuShow(!isMobileMenuShown);

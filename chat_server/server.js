@@ -1,8 +1,8 @@
+require('dotenv').config()
 const http = require('http');
 const app = require('./app');
 const socketIo = require("socket.io");
 const axios = require('axios');
-require('dotenv').config()
 
 const port = process.env.PORT || 4000
 const server = http.createServer(app);
@@ -32,6 +32,19 @@ io.on("connection", (socket) => {
         isSent: false,
         sender: sender,
         time: (new Date()).toLocaleString()
+    })
+    socket.on('disconnect', () => {
+        axios({
+            method: 'delete',
+            'Content-Type': 'application/json',
+            url: robotUrl,
+            data: {
+                userid: socket.id
+            }
+        }).then((resp) => {
+            console.log(`Deleted history for ${socket.id}`)
+        })
+        .catch((error) => {})
     })
     socket.on("message", (data) => {
         var text = ""

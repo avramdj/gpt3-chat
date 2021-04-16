@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { Redirect } from "react-router";
-import NavBar from "./components/NavBar";
 
 function Page404(props) {
 

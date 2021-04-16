@@ -1,6 +1,5 @@
 import MessageCard from './MessageCard'
-import {useEffect, useState} from 'react';
-import API from '../Api'
+import {useEffect} from 'react';
 
 function MessageBoard(props) {
 

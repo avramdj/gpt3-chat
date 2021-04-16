@@ -3,7 +3,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { useEffect, useState } from "react";
 import ChatPageRobot from "./ChatPageRobot";
 import ChatPageGlobal from "./ChatPageGlobal";
 import Home from "./Home"
@@ -12,15 +11,16 @@ import Unauthed from './Unauthed'
 import Login from "./Login";
 import Logout from "./Logout";
 import Page404 from "./Page404";
+import Signup from "./Signup"
 
 function App() {
 
   return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Home}/>
           <Unauthed path="/login" exact component={Login}/>
-          <Unauthed path="/signup" exact component={Login}/>
+          <Unauthed path="/signup" exact component={Signup}/>
+          <Authed path="/" exact component={Home}/>
           <Authed path="/gpt" exact component={ChatPageRobot}/>
           <Authed path="/global" exact component={ChatPageGlobal}/>
           <Authed path="/logout" exact component={Logout}/>

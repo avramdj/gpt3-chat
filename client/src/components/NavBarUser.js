@@ -1,5 +1,6 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
 
 function NavBarUser(props) {
 
@@ -106,5 +107,12 @@ function NavBarUser(props) {
     </nav>
   )
 }
-  
-export default NavBarUser;
+
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.user.loggedIn,
+    user: state.user.userInfo
+  }
+}
+
+export default connect(mapStateToProps, null)(NavBarUser);

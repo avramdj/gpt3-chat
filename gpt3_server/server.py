@@ -57,4 +57,15 @@ def call_robot():
 
     return {"ok": True, "data": text}
 
+@app.route('/', methods=['DELETE'])
+def delete_history():
+    uid = request.json['userid']
+    try:
+        del user_history[uid]
+    except KeyError:
+        pass
+
+    return {"ok": True}
+
+
 app.run(host='0.0.0.0', port=os.environ.get("PORT"))

@@ -1,5 +1,5 @@
 import ChatPage from './ChatPage';
-const ENDPOINT = '192.168.0.10:4000'
+const ENDPOINT = process.env.REACT_APP_GPT_URL
 
 function ChatPageRobot(props) {
   return <ChatPage ENDPOINT={ENDPOINT}/>

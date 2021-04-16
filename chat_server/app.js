@@ -3,26 +3,62 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require("helmet");
 const morgan = require('morgan')
-// const mongoose = require('mongoose');
-// const config = require('./config');
+const mongoose = require('mongoose');
+const { User } = require('./models/User')
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const passportJWT = require('passport-jwt');
+const localStrategy = require('passport-local');
+const passport = require('passport');
+const { getUser } = require('./services/UserService');
+const apiRoot = require('./api/ApiRoot')
 
-require('dotenv').config()
+const JWTStrategy = passportJWT.Strategy;
+
 const app = express();
-// mongoose.connect(config.MONGODB_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet())
 app.use(morgan('tiny'))
 app.use(cors())
+app.use(cookieParser())
 app.use(express.json())
+app.use(passport.initialize())
 
-app.get('/', (req, res) => {
-    return res.status(200).json({'message' : 'i am alive'})
-})
+// passport.use(new localStrategy(
+//     (username, password, done) => {
+//         try{
+//             const user = getUser(username, password);
+//             if(user){
+//                 return done(null, user)
+//             } else {
+//                 return done(null, false)
+//             }
+//         } catch (error){
+//             return done(error)
+//         }
+//     }
+// ))
+// passport.use(new JWTStrategy({
+//     jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+//     secret: process.env.JWT_SECRET
+// }, (jwtPayload, done) => {
+//     const user = getUser(jwtPayload.user.username, jwtPayload.user.password)
+//     if(user){
+//         return done(null, user);
+//     } else {
+//         return done(null, false, {
+//             message: "Token not matched"
+//         });
+//     }
+// }))
+
+app.use('/api', apiRoot)
 
 app.use(function (error, req, res, next) {
     const statusCode = error.status || 500;

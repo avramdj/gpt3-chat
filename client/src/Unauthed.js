@@ -1,6 +1,6 @@
 import {Redirect, Route} from 'react-router-dom';
 import {Header, Shell, Footer} from 'react';
-import { isLoggedIn } from './isLoggedIn'
+import { isLoggedIn } from './SessionLogic'
 
 function Unauthed ({component: Component, hasFooterHeader, ...rest}) {
   const authed = isLoggedIn();
@@ -21,7 +21,7 @@ function Unauthed ({component: Component, hasFooterHeader, ...rest}) {
   return (
     <Route
       {...rest}
-      render={(props) => authed === false
+      render={(props) => authed == false
         ? page
         : <Redirect to={{pathname: '/', state: {from: props.location}}} />}
     />

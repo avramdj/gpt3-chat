@@ -1,10 +1,10 @@
-import { isLoggedIn } from "../isLoggedIn";
 import NavBarGuest from "./NavBarGuest";
 import NavBarUser from "./NavBarUser";
+import { isLoggedIn } from '../SessionLogic'
 
 function NavBar(props) {
     if(isLoggedIn()){
-        return <NavBarUser user={{uid: 0}}/>
+        return <NavBarUser />
     } else {
         return <NavBarGuest />
     }

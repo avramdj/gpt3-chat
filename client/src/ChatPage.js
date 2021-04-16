@@ -2,7 +2,7 @@ import MessageBoard from './components/MessageBoard'
 import NavBar from './components/NavBar'
 import { useEffect, useState } from 'react';
 import socketIOClient from "socket.io-client";
-import { getUsername } from './isLoggedIn';
+import { getUsername } from './SessionLogic';
 
 function ChatPage(props) {
 
