@@ -1,4 +1,5 @@
 {
+  "homepage": "http://avramdj.github.io/gpt3"
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -37,7 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
