@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const { customAlphabet } = require('nanoid');
-const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz-_", 64);
 
 const schema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -20,4 +18,4 @@ const schema = mongoose.Schema({
     }
 });
 
-module.exports.User = mongoose.model('User', schema);
+module.exports = mongoose.model('User', schema);

@@ -1,36 +1,29 @@
 require('dotenv').config()
-const http = require('http');
-const app = require('./app');
-const socketIo = require("socket.io");
 const axios = require('axios');
+const app = require('./app');
+const http = require('http')
+const socketIo = require('socket.io')
 
 const port = process.env.PORT || 4000
+
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-      origin: '*',
+        origin: '*',
     }
 })
-
-const port2 = process.env.PORT2 || 4001
-const server2 = http.createServer(app);
-const io2 = socketIo(server2, {
-    cors: {
-      origin: '*',
-    }
-})
-
 
 const robotUrl = process.env.ROBOT_URL || "http://localhost:5000/"
 const url = process.env.URL || "192.168.0.10"
 
+const robotUser = {username: "GPT-3"}
+
 io.on("connection", (socket) => {
-    const sender = {uid: 0, name: "GPT-3"}
     console.log(`New connection\n ID: ${socket.id}`)
     socket.emit("response", {
         text: "Hello human. Feel free to ask me anything.",
         isSent: false,
-        sender: sender,
+        sender: robotUser,
         time: (new Date()).toLocaleString()
     })
     socket.on('disconnect', () => {
@@ -66,7 +59,7 @@ io.on("connection", (socket) => {
                 responseObj = {
                     text: text,
                     isSent: false,
-                    sender: sender,
+                    sender: robotUser,
                     time: new Date()
                 }
                 console.log("emitting response")
@@ -79,22 +72,16 @@ io.on("connection", (socket) => {
     })
 })
 
-io2.on("connection", (socket) => {
-    console.log(`New groupchat connection\n ID: ${socket.id}`)
-    socket.on("message", (data) => {
-        data.isSent = !data.isSent
-        socket.broadcast.emit("response", data);
-    })
-})
+// io2.on("connection", (socket) => {
+//     console.log(`New groupchat connection\n ID: ${socket.id}`)
+//     socket.on("message", (data) => {
+//         data.isSent = !data.isSent
+//         socket.broadcast.emit("response", data);
+//     })
+// })
 
 server.listen(port, url);
 
-server2.listen(port2, url);
-
 server.once('listening', function () {
     console.info(`Listening on http://${url}:${port}`);
-});
-
-server2.once('listening', function () {
-    console.info(`Listening on http://${url}:${port2}`);
 });

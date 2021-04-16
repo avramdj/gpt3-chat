@@ -12,6 +12,7 @@ import Login from "./Login";
 import Logout from "./Logout";
 import Page404 from "./Page404";
 import Signup from "./Signup"
+import Profile from './Profile'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Unauthed path="/login" exact component={Login}/>
           <Unauthed path="/signup" exact component={Signup}/>
           <Authed path="/" exact component={Home}/>
+          <Authed path="/profile" exact component={Profile}/>
           <Authed path="/gpt" exact component={ChatPageRobot}/>
           <Authed path="/global" exact component={ChatPageGlobal}/>
           <Authed path="/logout" exact component={Logout}/>

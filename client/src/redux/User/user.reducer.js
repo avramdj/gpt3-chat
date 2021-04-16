@@ -12,12 +12,12 @@ const reducer = (state = INITIAL_STATE, action) => {
         case LOGIN:
           cookies.set("token", action.token)
            return {
-             ...state, loggedIn: true, userInfo: action.userInfo
+             ...state, userInfo: action.userInfo
            };
         case LOGOUT:
           cookies.remove("token")
            return {
-              ...state, loggedIn: false, userInfo: undefined
+              ...state, userInfo: undefined
            };
          default: return state;
     }

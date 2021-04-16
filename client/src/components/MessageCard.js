@@ -4,6 +4,10 @@ import {motion} from 'framer-motion'
 
 function MessageCard(props) {
 
+  console.log(props)
+  console.log(props)
+  console.log(props)
+
   // const anim = useSpring({config: { duration: 500 }, opacity: 1, from: {opacity: 0}})
 
   if(props.isSent){
@@ -14,8 +18,8 @@ function MessageCard(props) {
             {opacity: 1}
           }
           className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex flex-row-reverse space-x-4 self-end">
-        <MessagePhoto isSent uid={props.sender.uid}/>
-        <MessageContent isSent name={props.sender.name} content={props.content}/>
+        <MessagePhoto isSent username={props.sender.username}/>
+        <MessageContent isSent name={props.sender.username} content={props.content}/>
       </motion.div>
     )
   } else {
@@ -26,8 +30,8 @@ function MessageCard(props) {
             {opacity: 1}
           }
           className="break-all px-6 py-1 m-auto w-max max-w-full bg-white rounded-xl shadow-md flex space-x-4">
-        <MessagePhoto isSent uid={props.sender.uid}/>
-        <MessageContent name={props.sender.name} content={props.content}/>
+        <MessagePhoto isSent username={props.sender.username}/>
+        <MessageContent name={props.sender.username} content={props.content}/>
       </motion.div>
     )
   }

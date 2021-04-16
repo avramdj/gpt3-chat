@@ -1,8 +1,8 @@
 import MessageBoard from './components/MessageBoard'
 import NavBar from './components/NavBar'
 import { useEffect, useState } from 'react';
-import socketIOClient from "socket.io-client";
-import { getUsername } from './SessionLogic';
+import io from "socket.io-client";
+import { connect } from 'react-redux'
 
 function ChatPage(props) {
 
@@ -11,14 +11,18 @@ function ChatPage(props) {
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    const newSocket = socketIOClient(props.ENDPOINT) 
+    const newSocket = io(process.env.REACT_APP_GPT_URL) 
     setSocket(newSocket)
-
   }, [])
   
   useEffect(() => {
     console.log("socket changed")
     if(socket != null){
+      console.log(props.roomName)
+      console.log(props.roomName)
+      console.log(props.roomName)
+      console.log(props.roomName)
+      socket.emit("roomJoin", {roomName: props.roomName})
       socket.on("response", data => {
         addMessage(data)
       });
@@ -48,7 +52,7 @@ function ChatPage(props) {
       return
     }
     if(inputText != ""){
-      const newMessageData = { text: inputText, isSent: true, sender: {uid: 0, name: getUsername()}, time: (new Date()).toLocaleString()}
+      const newMessageData = { text: inputText, isSent: true, sender: props.user, time: (new Date()).toLocaleString()}
       socket.emit("message", newMessageData)
       addMessage(newMessageData)
       inputEl.value = ""
@@ -109,4 +113,10 @@ function ChatPage(props) {
   );
 }
 
-export default ChatPage;
+const mapStateToProps = state => {
+  return {
+    user: state.user.userInfo
+  }
+}
+
+export default connect(mapStateToProps, null)(ChatPage);

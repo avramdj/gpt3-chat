@@ -2,10 +2,10 @@ import NavBar from "./components/NavBar";
 import { UserLogin } from "./SessionLogic";
 import GoogleLogin from 'react-google-login'
 import { Link, Redirect } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { connect } from 'react-redux'
-import { logIn } from './redux/User/user.actions'
+import { logIn, logOut } from './redux/User/user.actions'
 
 function Login(props) {
 
@@ -44,6 +44,10 @@ function Login(props) {
     })
   }
 
+  useEffect(() => {
+    props.logOut()
+  }, [])
+  
   const responseGoogle = (reponse) => {
     console.log(reponse)
   }
@@ -126,6 +130,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logIn: (userInfo, token) => dispatch(logIn(userInfo, token)),
+    logOut: () => dispatch(logOut()),
   }
 }
 
