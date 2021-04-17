@@ -3,6 +3,7 @@ import store from './redux/store'
 
 const backendUrl = process.env.REACT_APP_GPT_URL
 const protocol  = process.env.REACT_APP_GPT_PROTOCOL
+const fullBackendUrl = `${protocol}://${backendUrl}`
 
 export function isLoggedIn(){
     const state = store.getState()
@@ -17,7 +18,7 @@ export function UserLogin(username, password){
     return axios({
         method: 'post',
         'Content-Type': 'application/json',
-        url: `${protocol}://${backendUrl}/api/user/login`,
+        url: `${fullBackendUrl}/api/user/login`,
         validateStatus: false,
         data: {
             username: username,
@@ -30,7 +31,7 @@ export function UserSignUp(formObj){
     return axios({
         method: 'post',
         'Content-Type': 'application/json',
-        url: `${protocol}://${backendUrl}/api/user/signup`,
+        url: `${fullBackendUrl}/api/user/signup`,
         validateStatus: false,
         data: formObj
     })
@@ -47,5 +48,5 @@ export function getUsername(){
 }
 
 export function getPhotoUrl(username){
-    return "http://192.168.0.10:4000/images/" + username + ".jpeg"
+    return fullBackendUrl + "/images/" + username + ".jpeg"
 }
