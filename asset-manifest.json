@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-gpt3-chat/static/css/main.874b6f5e.chunk.css",
-    "main.js": "/react-gpt3-chat/static/js/main.0f598bfe.chunk.js",
-    "main.js.map": "/react-gpt3-chat/static/js/main.0f598bfe.chunk.js.map",
+    "main.js": "/react-gpt3-chat/static/js/main.70b67b5a.chunk.js",
+    "main.js.map": "/react-gpt3-chat/static/js/main.70b67b5a.chunk.js.map",
     "runtime-main.js": "/react-gpt3-chat/static/js/runtime-main.a7aeef53.js",
     "runtime-main.js.map": "/react-gpt3-chat/static/js/runtime-main.a7aeef53.js.map",
     "static/js/2.2b63e65b.chunk.js": "/react-gpt3-chat/static/js/2.2b63e65b.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.a7aeef53.js",
     "static/js/2.2b63e65b.chunk.js",
     "static/css/main.874b6f5e.chunk.css",
-    "static/js/main.0f598bfe.chunk.js"
+    "static/js/main.70b67b5a.chunk.js"
   ]
 }
