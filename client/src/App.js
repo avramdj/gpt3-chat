@@ -17,7 +17,7 @@ import Profile from './Profile'
 function App() {
 
   return (
-      <Router basename={process.env.GH_DEPLOY ? process.env.REACT_APP_GHPAGES_ROUTE : ""}>
+      <Router basename={process.env.GH_DEPLOY == "true" ? process.env.REACT_APP_GHPAGES_ROUTE : ""}>
         <Switch>
           <Unauthed path="/login" exact component={Login}/>
           <Unauthed path="/signup" exact component={Signup}/>

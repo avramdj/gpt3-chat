@@ -12,7 +12,9 @@ dotenv.load_dotenv()
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 prompt = ""
 
-with open("prompt.txt", "r") as f:
+filedir = os.path.dirname(os.path.realpath(__file__))
+
+with open(filedir + "/prompt.txt", "r") as f:
     prompt = f.read()
 
 template = """
@@ -32,7 +34,7 @@ def call_robot():
         history = user_history[uid]
 
     prompt_local = prompt + history + template.format(in_data)
-        
+
     result = openai.Completion.create(
         engine="davinci",
         prompt=prompt_local,
@@ -69,3 +71,4 @@ def delete_history():
 
 
 app.run(host='0.0.0.0', port=os.environ.get("PORT"))
+
