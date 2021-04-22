@@ -1,4 +1,4 @@
-# GPT-3 chat app
+# GPT-3 Chat
 
 OpenAI GPT-3 bot chat application.
 
