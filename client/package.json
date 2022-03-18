@@ -23,7 +23,7 @@
     "react-meta-tags": "^1.0.1",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.0",
     "react-spring": "^9.1.1",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
@@ -61,10 +61,10 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "gh-pages": "^3.1.0",
+    "autoprefixer": "^10.4.4",
+    "gh-pages": "^3.2.3",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.1.1"
+    "tailwindcss": "^2.2.19"
   },
   "proxy": "http://192.168.0.10:4000"
 }
